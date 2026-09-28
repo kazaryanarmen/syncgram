@@ -1,7 +1,7 @@
 from syncgram import TelegramBot
 
 # init bot
-bot = TelegramBot(token="8615494848:AAF0H1pON7f5EN1EdhSm-y7Ek3FAuK2gqqg")
+bot = TelegramBot(token="BOT-TOKEN")
 
 # import EventRouter
 from syncgram import EventRouter
