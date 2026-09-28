@@ -13,14 +13,18 @@
 
 ```bash
 pip install git+https://github.com/kazaryanarmen/syncgram.git
+```
+
 Once published to PyPI, installation will be standard:
 
-Bash
+```bash
 pip install syncgram
+```
+
 💡 Quick Start
 Create a simple echo bot in just a few minutes:
 
-Python
+```python
 from syncgram import TelegramBot, EventRouter
 
 # Initialize the bot
@@ -40,6 +44,8 @@ def receive_messages(message):
 # Start the bot via polling
 if __name__ == "__main__":
     bot.start_polling(router)
+```
+
 ✨ Features
 Synchronous Approach: Perfect for small scripts, automation tools, and developers who prefer blocking code over async loops.
 
