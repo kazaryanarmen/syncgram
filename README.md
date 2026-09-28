@@ -9,19 +9,20 @@
 
 ## 🚀 Installation
 
-*Github:*
+**Github:**
 
 ```bash
 pip install git+https://github.com/kazaryanarmen/syncgram.git
 ```
 
-Python:
+**Python:**
 
 ```bash
 pip install syncgram
 ```
 
-💡 Quick Start
+💡 **Quick Start**
+
 Create a simple echo bot in just a few minutes:
 
 ```python
@@ -46,15 +47,18 @@ if __name__ == "__main__":
     bot.start_polling(router)
 ```
 
-✨ Features
+✨ **Features**
+
 Synchronous Approach: Perfect for small scripts, automation tools, and developers who prefer blocking code over async loops.
 
-Easy Routing: Cleanly organize your bot's logic using EventRouter.
+• Easy Routing: Cleanly organize your bot's logic using EventRouter.
 
-Simple API: Minimal abstraction layers for a fast and frictionless start.
+• Simple API: Minimal abstraction layers for a fast and frictionless start.
 
-🛠️ Contributing
+🛠️ **Contributing**
+
 Contributions, issues, and feature requests are welcome! Feel free to check out the issues page or submit a Pull Request.
 
-📄 License
+📄 **License**
+
 This project is distributed under the MIT License.
