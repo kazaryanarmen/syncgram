@@ -9,13 +9,13 @@
 
 ## 🚀 Installation
 
-*(Since the library is currently hosted on GitHub only)*
+*Github:*
 
 ```bash
 pip install git+https://github.com/kazaryanarmen/syncgram.git
 ```
 
-Once published to PyPI, installation will be standard:
+Python:
 
 ```bash
 pip install syncgram
