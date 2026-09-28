@@ -12,7 +12,7 @@
 *(Since the library is currently hosted on GitHub only)*
 
 ```bash
-pip install git+[https://github.com/your_username/syncgram.git](https://github.com/your_username/syncgram.git)
+pip install git+https://github.com/kazaryanarmen/syncgram.git
 Once published to PyPI, installation will be standard:
 
 Bash
