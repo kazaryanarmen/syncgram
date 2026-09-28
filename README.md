@@ -2,6 +2,8 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python Versions](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/)
+[![Total Downloads](https://static.pepy.tech/badge/syncgram)](https://pepy.tech/project/syncgram)
+
 
 **Syncgram** is a simple, lightweight, and synchronous Python library for creating Telegram bots. No `async/await` boilerplate—just clean, straightforward code and convenient routing using routers.
 
