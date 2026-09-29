@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python Versions](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/)
 [![PyPI version](https://img.shields.io/pypi/v/syncgram.svg)](https://pypi.org/project/syncgram/)
-[![Telegram Bot API](https://img.shields.io/badge/Bot%20API-10.2-blue?logo=telegram&logoColor=white)](https://core.telegram.org/bots/api)
+[![Telegram Bot API](https://img.shields.io/badge/Bot%20API-10.3-blue?logo=telegram&logoColor=white)](https://core.telegram.org/bots/api)
 
 
 **Syncgram** is a simple, lightweight, and synchronous Python library for creating Telegram bots. No `async/await` boilerplate—just clean, straightforward code and convenient routing using routers.
