@@ -18,7 +18,7 @@ Welcome to SyncGram Documentation!
    :caption: Contents:
    :hidden:
 
-    keyboards
+   keyboards
    api
 
 **SyncGram** is a convenient Python library for creating Telegram bots.
