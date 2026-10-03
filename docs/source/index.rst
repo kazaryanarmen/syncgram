@@ -60,4 +60,8 @@ Reference
 ---------
 
 * :doc:`api` — Complete API reference for classes and methods.
+
+Keyboards
+---------
+
 * :doc:`keyboards` - Inline and Reply Keyboard Markup's
