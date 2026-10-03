@@ -17,7 +17,7 @@ Reply keyboards replace the user's standard device keyboard. Here is an example 
    bot = TelegramBot(token="BOT_TOKEN")
    router = EventRouter()
 
-   @router.message(commands=["start"])
+   @router.command("start")
    def send_welcome(message):
        # Create a Reply keyboard
        keyboard = ReplyKeyboardMarkup(
@@ -49,7 +49,7 @@ Inline keyboards are attached directly to the message. They are perfect for inte
    bot = TelegramBot(token="BOT_TOKEN")
    router = EventRouter()
 
-   @router.message(commands=["menu"])
+   @router.command("menu")
    def send_menu(message):
        # Create an Inline keyboard
        keyboard = InlineKeyboardMarkup(
