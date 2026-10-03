@@ -67,7 +67,12 @@ class EventRouter:
             return func
         return decorator
 
-    def feed(self, update_data: dict | str) -> None:
+    def feed(self, update_data: dict | str | list) -> None:
+        if isinstance(update_data, list):
+            for item in update_data:
+                self.feed(item)
+            return
+
         if isinstance(update_data, str):
             import json
             update_data = json.loads(update_data)

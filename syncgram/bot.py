@@ -1,9 +1,12 @@
 import requests
 import json
 import time
+import logging
 from .exceptions import TelegramBadRequestError, TelegramUnauthorizedError, TelegramNetworkError, TelegramAPIError
 from .methods.get_updates import get_updates
 from .methods import __all__ as all_methods
+
+logger = logging.getLogger("SyncGram")
 
 class MethodsProxy:
     def __init__(self, bot: 'TelegramBot'):
@@ -46,8 +49,14 @@ class TelegramBot:
 
         try:
             data = response.json()
+            logger.debug(f"DEBUG API [{method_name}] Response type: {type(data)}, Content: {data}")
         except ValueError:
             raise TelegramAPIError("Received an invalid JSON response from the Telegram server.")
+
+        if not isinstance(data, dict):
+            if isinstance(data, list):
+                return data
+            raise TelegramAPIError(f"Received an invalid response format from Telegram: {data}")
 
         if not data.get("ok", False):
             error_code = data.get("error_code")
@@ -77,45 +86,56 @@ class TelegramBot:
 
     def start_polling(self, router, interval: float = 1.0) -> None:
         offset = 0
-
         bot_username = "Unknown Bot"
 
         try:
             me = self.methods.get_me()
-
             if isinstance(me, dict) and "username" in me:
                 bot_username = f"@{me['username']}"
             elif hasattr(me, "username") and me.username:
                 bot_username = f"@{me.username}"
         except Exception:
             pass
-    
-        print("\n" + "=" * 45)
-        print(f"🤖 Bot {bot_username} is up and running!")
-        print("📡 Polling for updates... (Press Ctrl+C to stop)")
-        print("=" * 45 + "\n")
-    
+
+        logger.info("\n%s", "=" * 45)
+        logger.info("🤖 Bot %s is up and running!", bot_username)
+        logger.info("📡 Polling for updates... (Press Ctrl+C to stop)")
+        logger.info("%s\n", "=" * 45)
+
         while True:
             try:
                 updates = self.methods.get_updates(offset=offset, timeout=30)
-                
+
                 if updates:
+                    if not isinstance(updates, list):
+                        updates = [updates]
+
                     for update in updates:
-                        if isinstance(update, dict):
-                            offset = update.get("update_id", offset) + 1
-                            router.feed(update)
+                        if isinstance(update, list):
+                            sub_items = update
                         else:
-                            offset = getattr(update, "update_id", offset) + 1
-                            if hasattr(update, 'to_dict'):
-                                router.feed(update.to_dict())
+                            sub_items = [update]
+
+                        for item in sub_items:
+                            if isinstance(item, dict):
+                                offset = item.get("update_id", offset) + 1
+                                router.feed(item)
+                            elif hasattr(item, "update_id"):
+                                offset = getattr(item, "update_id", offset) + 1
+                                if hasattr(item, "to_dict"):
+                                    router.feed(item.to_dict())
+                                else:
+                                    router.feed(item)
                             else:
-                                router.feed(update)
+                                router.feed(item)
+
             except KeyboardInterrupt:
-                print("\n" + "=" * 45)
-                print(f"🛑 Polling for {bot_username} stopped gracefully. Goodbye!")
-                print("=" * 45)
+                logger.info("\n%s", "=" * 45)
+                logger.info("🛑 Polling for %s stopped gracefully. Goodbye!", bot_username)
+                logger.info("%s", "=" * 45)
                 break
             except Exception as e:
-                print(f"⚠️ Polling error: {e}")
-        
+                import traceback
+                logger.error(f"⚠️ Polling error detail: {e}\n{traceback.format_exc()}")
+
             time.sleep(interval)

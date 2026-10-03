@@ -127,6 +127,16 @@ class Update:
     def from_dict(cls, data: dict | None) -> 'Update' | None:
         if not data:
             return None
+
+        if isinstance(data, list):
+            if data and isinstance(data[0], dict):
+                data = data[0]
+            else:
+                return None
+
+        if not isinstance(data, dict):
+            return None
+
         from .bot_subscription_updated import BotSubscriptionUpdated
         from .business_connection import BusinessConnection
         from .business_messages_deleted import BusinessMessagesDeleted

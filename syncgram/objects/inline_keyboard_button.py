@@ -71,12 +71,23 @@ class InlineKeyboardButton:
     def from_dict(cls, data: dict | None) -> 'InlineKeyboardButton' | None:
         if not data:
             return None
+            
+        if isinstance(data, list):
+            if data and isinstance(data[0], dict):
+                data = data[0]
+            else:
+                return None
+
+        if not isinstance(data, dict):
+            return None
+
         from .callback_game import CallbackGame
         from .copy_text_button import CopyTextButton
         from .disabled_button import DisabledButton
         from .login_url import LoginUrl
         from .switch_inline_query_chosen_chat import SwitchInlineQueryChosenChat
         from .web_app_info import WebAppInfo
+        
         return cls(
             text=data.get('text'),
             icon_custom_emoji_id=data.get('icon_custom_emoji_id'),
