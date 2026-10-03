@@ -6,8 +6,6 @@
 import os
 import sys
 
-# Указываем путь к корню проекта (на два уровня выше от docs/source),
-# чтобы Sphinx мог импортировать модуль SyncGram
 sys.path.insert(0, os.path.abspath("../../"))
 
 # -- Project information -----------------------------------------------------
@@ -22,9 +20,9 @@ release = '1.0.0'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
-    'sphinx.ext.autodoc',    # Автоматическое чтение докстрингов из кода
-    'sphinx.ext.viewcode',   # Ссылки на исходный код в документации
-    'sphinx.ext.napoleon',   # Поддержка стилей Google / NumPy для докстрингов
+    'sphinx.ext.autodoc',
+    'sphinx.ext.viewcode',
+    'sphinx.ext.napoleon',
 ]
 
 templates_path = ['_templates']
@@ -35,6 +33,6 @@ language = 'en'
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-# Тема Read the Docs
+# Read the Docs
 html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
