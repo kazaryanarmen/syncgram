@@ -1,6 +1,18 @@
 Welcome to SyncGram Documentation!
 ==================================
 
+.. image:: https://img.shields.io/badge/License-MIT-yellow.svg
+   :target: https://opensource.org/licenses/MIT
+
+.. image:: https://img.shields.io/badge/python-3.8%2B-blue.svg
+   :target: https://www.python.org/
+
+.. image:: https://img.shields.io/badge/pypi-v1.0.0-blue.svg
+   :target: https://pypi.org/project/syncgram/
+
+.. image:: https://img.shields.io/badge/Bot%20API-10.3-blue.svg
+   :target: https://core.telegram.org/bots/api
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
